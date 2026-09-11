@@ -483,7 +483,6 @@
             <div class="product-card">
                 <div>
                     <div class="product-img-holder">
-                        <!-- استبدل الرابط بصورة الأرز الخاصة بك إذا أردت -->
                         <img src="1000437198.jpg" alt="أرز تاج الفاخر" onerror="this.src='https://via.placeholder.com/200?text=TAJ+Rice'">
                     </div>
                     <div class="product-info">
@@ -495,7 +494,7 @@
                     <div class="price-section">
                         <div class="product-price">35 <span>جنيه</span></div>
                     </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('أرز تاج الفاخر', 35)">
+                    <button class="add-to-cart-btn" onclick="addToCart('أرز تاج الفاخر', 35, event)">
                         <i class="fa-solid fa-plus"></i> إضافة للسلة
                     </button>
                 </div>
@@ -516,7 +515,7 @@
                     <div class="price-section">
                         <div class="product-price">28 <span>جنيه</span></div>
                     </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('مكرونة تاج العضوية', 28)">
+                    <button class="add-to-cart-btn" onclick="addToCart('مكرونة تاج العضوية', 28, event)">
                         <i class="fa-solid fa-plus"></i> إضافة للسلة
                     </button>
                 </div>
@@ -546,7 +545,7 @@
                     <div class="price-section">
                         <div class="product-price" id="sugarPriceDisplay">30 <span>جنيه</span></div>
                     </div>
-                    <button class="add-to-cart-btn" onclick="addSugarToCart()">
+                    <button class="add-to-cart-btn" onclick="addSugarToCart(event)">
                         <i class="fa-solid fa-plus"></i> إضافة للسلة
                     </button>
                 </div>
@@ -567,7 +566,7 @@
                     <div class="price-section">
                         <div class="product-price">95 <span>جنيه</span></div>
                     </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('مجموعة بهارات تاج الملكية', 95)">
+                    <button class="add-to-cart-btn" onclick="addToCart('مجموعة بهارات تاج الملكية', 95, event)">
                         <i class="fa-solid fa-plus"></i> إضافة للسلة
                     </button>
                 </div>
@@ -617,32 +616,85 @@
         }
 
         // إضافة السكر للسلة بناءً على خياره المحدد
-        function addSugarToCart() {
+        function addSugarToCart(event) {
             const select = document.getElementById('sugarGrade');
             const selectedOption = select.options[select.selectedIndex];
             const name = selectedOption.getAttribute('data-name');
             const price = parseFloat(select.value);
             
-            addToCart(name, price);
+            addToCart(name, price, event);
         }
 
         // إضافة منتج للسلة
-        function addToCart(title, price) {
+        function addToCart(title, price, event) {
             cart.push({ title, price });
             updateCartUI();
             
             // إشعار بسيط بالاضافة
-            const btn = event.currentTarget;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = `<i class="fa-solid fa-check"></i> تم التموين`;
-            btn.style.background = "#2ecc71";
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = "";
-            }, 1200);
+            if (event && event.currentTarget) {
+                const btn = event.currentTarget;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = `<i class="fa-solid fa-check"></i> تم التموين`;
+                btn.style.background = "#2ecc71";
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = "";
+                }, 1200);
+            }
         }
 
         // تحديث واجهة السلة
         function updateCartUI() {
             const cartCount = document.getElementById('cartCount');
-          
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartTotal = document.getElementById('cartTotal');
+
+            cartCount.innerText = cart.length;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `<p style="text-align: center; color: #888; margin-top: 20px;">السلة فارغة حالياً</p>`;
+                cartTotal.innerText = `0 جنيه`;
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <h4>${item.title}</h4>
+                            <p>${item.price} جنيه</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#e74c3c; cursor:pointer;">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            cartTotal.innerText = `${total} جنيه`;
+        }
+
+        // حذف عنصر من السلة
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // إتمام الطلب
+        function checkout() {
+            if (cart.length === 0) {
+                alert('السلة فارغة!');
+                return;
+            }
+            alert(`تم استلام طلبك بنجاح! الإجمالي: ${total} جنيه.`);
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+    </script>
+</body>
+</html>
