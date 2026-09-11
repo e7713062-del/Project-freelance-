@@ -1,0 +1,165 @@
+/* ==========================================
+   قسم المؤسس - شركة تاج (شركة جلال)
+   ========================================== */
+
+/* إعدادات عامة للقسم */
+.about-founder-section {
+  padding: 80px 20px;
+  background-color: #f9fbfd;
+  direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.about-founder-section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* العنوان الرئيسي */
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 2.2rem;
+  color: #1a365d; /* أزرق داكن مؤسسي */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.title-underline {
+  width: 70px;
+  height: 4px;
+  background: #d4af37; /* لون ذهبي يعبر عن "تاج" */
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* تخطيط الشبكة */
+.founder-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* بطاقة المؤسس */
+.founder-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 40px 25px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.founder-card:hover {
+  transform: translateY(-5px);
+}
+
+.founder-badge {
+  position: absolute;
+  top: -15px;
+  right: 50%;
+  transform: translateX(50%);
+  background: #d4af37;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.company-logo-placeholder {
+  width: 120px;
+  height: 120px;
+  margin: 20px auto;
+  background: #1a365d;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 4px solid #f6e05e;
+}
+
+.founder-name {
+  font-size: 1.6rem;
+  color: #1a365d;
+  margin-bottom: 5px;
+}
+
+.founder-tagline {
+  color: #718096;
+  font-size: 0.95rem;
+}
+
+/* المحتوى النصي */
+.founder-content h3 {
+  font-size: 1.8rem;
+  color: #1a365d;
+  margin-bottom: 20px;
+}
+
+.lead-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+
+.description-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #4a5568;
+  margin-bottom: 30px;
+}
+
+/* قيم الشركة */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.value-item {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  border-right: 4px solid #d4af37;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.value-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.value-item h4 {
+  font-size: 1.05rem;
+  color: #1a365d;
+  margin-bottom: 8px;
+}
+
+.value-item p {
+  font-size: 0.85rem;
+  color: #718096;
+  line-height: 1.5;
+}
+
+/* التجاوب مع شاشات الموبايل */
+@media (max-width: 768px) {
+  .founder-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .founder-card {
+    margin-bottom: 20px;
+  }
+}
