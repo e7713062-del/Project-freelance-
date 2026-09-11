@@ -1,58 +1,392 @@
-<section class="about-founder-section">
-  <div class="container">
-    <!-- عنوان القسم -->
-    <div class="section-title">
-      <h2>من نحن والمؤسس</h2>
-      <div class="title-underline"></div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة تاج للمنتجات الغذائية - عن الشركة والمؤسس</title>
+    <style>
+        /* ==========================================
+           التنسيقات العامة للسي اس اس (CSS)
+           ========================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* الهيدر العلوي والقائمة */
+        .site-header {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 20px 0;
+            border-bottom: 4px solid #d4af37;
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .brand-title a {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .brand-title a span {
+            color: #d4af37;
+        }
+
+        .brand-title a:hover {
+            opacity: 0.9;
+        }
+
+        .brand-tagline {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        /* زر العودة للصفحة الرئيسية */
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #d4af37;
+            color: #0f172a;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-home:hover {
+            background-color: #f59e0b;
+            transform: translateY(-2px);
+        }
+
+        /* لافتة البانر الرئيسية */
+        .hero-banner {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero-banner h1 {
+            font-size: 2rem;
+            color: #f8fafc;
+            margin-bottom: 10px;
+        }
+
+        .hero-banner p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* قسم المؤسس وعن الشركة */
+        .about-section {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 40px 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .title-divider {
+            width: 70px;
+            height: 4px;
+            background-color: #d4af37;
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* شبكة المحتوى (عمودين) */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* بطاقة المؤسس (شركة جلال) */
+        .founder-card {
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-top: 5px solid #d4af37;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #0f172a;
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo-box {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px auto;
+            background-color: #0f172a;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border: 4px solid #d4af37;
+        }
+
+        .founder-name {
+            font-size: 1.5rem;
+            color: #0f172a;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .founder-desc {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* التفاصيل النصية للمؤسس */
+        .info-col .lead-p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .info-col .body-p {
+            font-size: 1.05rem;
+            color: #334155;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* شبكة المنتجات (أرز، مكرونة، سكر) */
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-right: 4px solid #d4af37;
+            padding-right: 10px;
+        }
+
+        .products-grid, .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .product-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-card h4 {
+            font-size: 1.1rem;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .product-card p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* القيم المؤسسية */
+        .value-box {
+            background-color: #f8fafc;
+            border-right: 4px solid #1e293b;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .value-box h5 {
+            font-size: 1.05rem;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+
+        .value-box p {
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
+        /* الفوتر السفلي */
+        .site-footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+
+        /* التجاوب مع شاشات الهواتف المحمولة */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                text-align: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر العلوي المربوط بالصفحة الرئيسية -->
+    <header class="site-header">
+        <div class="container header-content">
+            <div>
+                <!-- عند الضغط على الاسم ينقلك للصفحة الرئيسية -->
+                <div class="brand-title">
+                    <a href="index.html">شركة <span>تاج</span></a>
+                </div>
+                <div class="brand-tagline">منتجات غذائية عالية الجودة | إحدى شركات مجموعة جلال</div>
+            </div>
+            
+            <!-- زر العودة للصفحة الرئيسية -->
+            <a href="index.html" class="btn-home">
+                &#8594; الصفحة الرئيسية
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- لافتة الترحيب -->
+        <section class="hero-banner">
+            <h1>أجود المنتجات الغذائية لتتويج مائدتكم</h1>
+            <p>نلتزم بتقديم الأفضل دائماً في صناعة وتعبئة الأرز والمكرونة والسكر بأعلى معايير الجودة العالمية.</p>
+        </section>
+
+        <!-- قسم عن الشركة والمؤسس -->
+        <section class="about-section">
+            <div class="section-header">
+                <h2>عن الشركة والمؤسس</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="content-grid">
+                <!-- العمود الأيمن: بطاقة المؤسس -->
+                <div class="founder-card">
+                    <span class="badge">الشركة المؤسسة</span>
+                    <div class="logo-box">جلال</div>
+                    <div class="founder-name">مجموعة جلال</div>
+                    <div class="founder-desc">الريادة والتميز في الاستثمار والصناعات الغذائية</div>
+                </div>
+
+                <!-- العمود الأيسر: التفاصيل المؤسسية -->
+                <div class="info-col">
+                    <p class="lead-p">
+                        تأسست علامة <strong>"تاج"</strong> برؤية طموحة واستراتيجية راسخة تحت مظلة <strong>شركة جلال</strong>، لتكون العلامة الرائدة في تقديم المستلزمات الغذائية الأساسية للأسرة العربية.
+                    </p>
+                    <p class="body-p">
+                        منذ الانطلاقة الأولى، أخذت مجموعة جلال على عاتقها الالتزام بأعلى معايير الجودة في اختيار وتصنيع وتوزيع منتجات "تاج". نحن نؤمن بأن الأمن الغذائي والجودة العالية هما أساس كل بيت، ولهذا نسعى جاهدين لتوفير منتجات غذائية موثوقة تعزز الصحة وتلبي تطلعات عميلنا الكريم.
+                    </p>
+
+                    <!-- عرض المنتجات -->
+                    <div class="section-subtitle">منتجاتنا الأساسية</div>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <h4>أرز تاج</h4>
+                            <p>أرز فاخر عالي النقاء وسريع الطهي</p>
+                        </div>
+                        <div class="product-card">
+                            <h4>مكرونة تاج</h4>
+                            <p>مصنوعة من أجود أنواع القمح الصلب</p>
+                        </div>
+                        <div class="product-card">
+                            <h4>سكر تاج</h4>
+                            <p>سكر نقي أبيض مكرر بأعلى المعايير</p>
+                        </div>
+                    </div>
+
+                    <!-- القيم المؤسسية -->
+                    <div class="section-subtitle">قيمنا المؤسسية</div>
+                    <div class="values-grid">
+                        <div class="value-box">
+                            <h5>الجودة الفائقة</h5>
+                            <p>انتقاء دقيق للمواد الخام والأغذية.</p>
+                        </div>
+                        <div class="value-box">
+                            <h5>المصداقية</h5>
+                            <p>شفافية كاملة مع المستهلك والشركاء.</p>
+                        </div>
+                        <div class="value-box">
+                            <h5>التطوير المستمر</h5>
+                            <p>خطوط إنتاج وتعبئة أحدث دائماً.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- محتوى قسم المؤسس والشركة -->
-    <div class="founder-grid">
-      
-      <!-- العمود الأول: البطاقة التعريفية بالمؤسس -->
-      <div class="founder-card">
-        <div class="founder-badge">الشركة المؤسسة</div>
-        <div class="founder-logo-holder">
-          <!-- يمكنك استبدال الصورة بلوجو شركة جلال -->
-          <div class="company-logo-placeholder">مجموعة جلال</div>
-        </div>
-        <h3 class="founder-name">شركة جلال</h3>
-        <p class="founder-tagline">الريادة والتميز في صناعة الأغذية</p>
-      </div>
+    <!-- الفوتر -->
+    <footer class="site-footer">
+        جميع الحقوق محفوظة © شركة تاج للمنتجات الغذائية - تأسست بواسطة مجموعة جلال
+    </footer>
 
-      <!-- العمود الثاني: الرسالة والكلام المؤسسي -->
-      <div class="founder-content">
-        <h3>عن علامة "تاج" والمؤسس</h3>
-        
-        <p class="lead-text">
-          تأسست علامة <strong>"تاج"</strong> برؤية طموحة واستراتيجية راسخة تحت مظلة <strong>شركة جلال</strong>، لتكون الرائدة في تقديم أجود المستلزمات الغذائية الأساسية لكل بيت عربي.
-        </p>
-
-        <p class="description-text">
-          منذ الانطلاقة الأولى، أخذت **شركة جلال** على عاتقها الالتزام بأعلى معايير الجودة العالمية في انتقاء وتعبئة وتوزيع المنتجات الغذائية الرئيسية من **الأرز، المكرونة، والسكر**. نحن نؤمن بأن الغذاء الصحي والموثوق هو أساس كل مجتمع وقوي، ولهذا نسعى جاهدين لتوفير منتجات تتوج مائدتكم بالجودة والنقاء.
-        </p>
-
-        <!-- قيم الشركة الأساسية -->
-        <div class="values-grid">
-          <div class="value-item">
-            <div class="value-icon">🌾</div>
-            <h4>جودة فائقة</h4>
-            <p>اختيار أفضل المحاصيل والمواد الخام وفق أعلى معايير السلامة.</p>
-          </div>
-          <div class="value-item">
-            <div class="value-icon">🤝</div>
-            <h4>مصداقية وشفافية</h4>
-            <p>التزام تام نحو مستهلكينا وشركائنا بنقديم الأفضل دائماً.</p>
-          </div>
-          <div class="value-item">
-            <div class="value-icon">🏆</div>
-            <h4>ريادة واستدامة</h4>
-            <p>تطوير مستمر لعمليات الإنتاج والتوزيع لتلبية احتياجات السوق.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
+</body>
+</html>
