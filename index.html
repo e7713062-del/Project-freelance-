@@ -3,23 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تاج - TAJ | المنتجات الغذائية الفاخرة</title>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>شركة تاج - للغذاء والتعبئة الفاخرة</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* --- الأساسيات والألوان --- */
+        /* Base Reset & Variables */
         :root {
-            --primary-color: #d4af37; /* ذهبي تاج */
-            --primary-dark: #b38f2a;
-            --bg-light: #ffffff;
-            --bg-secondary: #f9f9fb;
-            --text-dark: #222222;
-            --text-muted: #666666;
-            --developer-green: #2ecc71; /* لون اسم مصطفى تامر */
-            --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12);
+            --primary-white: #ffffff;
+            --off-white: #f8f9fa;
+            --accent-gold: #d4af37;
+            --text-dark: #2c3e50;
+            --text-muted: #6c757d;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
             --transition: all 0.3s ease;
         }
 
@@ -27,673 +21,566 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-light);
+            background-color: var(--off-white);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* --- الهيدر وشريط التنقل --- */
+        /* Header & Navigation */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
+            background-color: var(--primary-white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
-            padding: 15px 5%;
+        }
+
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.2rem 8%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 26px;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--text-dark);
             text-decoration: none;
         }
 
-        .logo span {
-            color: var(--primary-color);
+        .logo i {
+            color: var(--accent-gold);
+            font-size: 2rem;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 2rem;
         }
 
-        nav a {
+        .nav-links a {
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
             transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--primary-color);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .cart-icon-btn {
             position: relative;
-            background: var(--bg-secondary);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 18px;
-            color: var(--text-dark);
-            transition: var(--transition);
+            padding-bottom: 5px;
         }
 
-        .cart-icon-btn:hover {
-            background: var(--primary-color);
-            color: #fff;
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
         }
 
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #e74c3c;
-            color: #fff;
-            font-size: 12px;
-            font-weight: bold;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* --- القسم الرئيسي (Hero) --- */
-        .hero {
-            padding: 60px 5%;
-            background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 70vh;
-        }
-
-        .hero-text {
-            max-width: 550px;
-        }
-
-        .hero-text h1 {
-            font-size: 48px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-text h1 span {
-            color: var(--primary-color);
-        }
-
-        .hero-text p {
-            color: var(--text-muted);
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--primary-color);
-            color: #fff;
-            padding: 12px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-        }
-
-        /* --- قسم المنتجات --- */
-        .products-section {
-            padding: 80px 5%;
-            background: var(--bg-light);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
+        .nav-links a.active::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-gold);
         }
 
+        /* Page Structure (SPA) */
+        .page-section {
+            display: none;
+            padding: 120px 8% 60px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 85vh;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Home Page */
+        .hero {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            padding: 100px 50px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            color: var(--text-muted);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: var(--text-dark);
+            color: var(--primary-white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 2px solid var(--text-dark);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--text-dark);
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        /* Products Page & Graphics */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 2.5rem;
         }
 
-        /* كارت المنتج مع تأثيرات CSS */
         .product-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 20px;
-            border: 1px solid #eee;
-            box-shadow: var(--shadow-light);
+            background: var(--primary-white);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
             transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid #eee;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary-color);
         }
 
-        .product-img-holder {
-            width: 100%;
-            height: 250px;
+        .product-graphic {
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #fcfcfc;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            overflow: hidden;
+            margin-bottom: 1.5rem;
         }
 
-        .product-img-holder img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            transition: var(--transition);
+        .product-graphic i {
+            font-size: 5rem;
+            color: var(--accent-gold);
         }
 
-        .product-card:hover .product-img-holder img {
-            transform: scale(1.08);
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .product-info h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .product-info p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .price-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        .product-price {
-            font-size: 22px;
-            font-weight: 800;
+        .product-card .price {
+            font-size: 1.4rem;
+            font-weight: bold;
             color: var(--text-dark);
+            margin: 1rem 0;
         }
 
-        .product-price span {
-            font-size: 14px;
-            color: var(--text-muted);
+        /* Farm & Manufacturing Section */
+        .farm-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
-        /* تخصيص اختيار السكر */
-        .sugar-options {
-            margin-bottom: 15px;
+        .farm-img-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: var(--card-shadow);
         }
 
-        .sugar-options label {
-            font-size: 13px;
-            color: var(--text-muted);
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .sugar-select {
+        .farm-img-card img {
             width: 100%;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-family: inherit;
-            outline: none;
-            cursor: pointer;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .add-to-cart-btn {
+        .farm-img-card .caption {
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--primary-white);
             width: 100%;
-            margin-top: 15px;
-            background: #222;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--primary-white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .info-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
             display: flex;
-            justify-content: center;
             align-items: center;
             gap: 10px;
         }
 
-        .add-to-cart-btn:hover {
-            background: var(--primary-color);
-            color: #fff;
+        /* Orders Section */
+        .order-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--primary-white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
         }
 
-        /* --- سلة التسوق التفاعلية (Drawer) --- */
-        .cart-drawer {
-            position: fixed;
-            top: 0;
-            left: -400px;
-            width: 350px;
-            height: 100vh;
-            background: #fff;
-            box-shadow: 5px 0 25px rgba(0,0,0,0.1);
-            z-index: 1001;
-            transition: var(--transition);
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
+        .order-form .form-group {
+            margin-bottom: 1.2rem;
         }
 
-        .cart-drawer.open {
-            left: 0;
+        .order-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+        .order-form input, .order-form select, .order-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
         }
 
-        .close-cart {
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            color: var(--text-muted);
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        .cart-item-details h4 {
-            font-size: 15px;
-        }
-
-        .cart-item-details p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .cart-footer {
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-
-        .total-price {
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        /* --- الفوتر والحقوق --- */
-        footer {
-            background: #111;
-            color: #fff;
+        /* About Section */
+        .about-content {
+            background: var(--primary-white);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
         }
 
-        footer p {
-            font-size: 16px;
-            letter-spacing: 0.5px;
-        }
-
-        /* تخصيص لون اسم مصطفى تامر بالاخضر */
-        .developer-name {
-            color: var(--developer-green);
-            font-weight: 800;
-            text-decoration: none;
+        .founders-badge {
             display: inline-block;
-            transition: var(--transition);
+            background: #fdf8ec;
+            color: var(--accent-gold);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--accent-gold);
         }
 
-        .developer-name:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+        .packaging-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: var(--off-white);
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid #eee;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .cart-drawer {
-                width: 100%;
-                left: -100%;
-            }
+            .navbar { flex-direction: column; gap: 1rem; }
+            .order-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط التنقل -->
+    <!-- Navigation Header -->
     <header>
-        <a href="#" class="logo">
-            <i class="fa-solid fa-crown" style="color: #d4af37;"></i>
-            تاج <span>TAJ</span>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#products">المنتجات</a></li>
-                <li><a href="#about">عن تاج</a></li>
+        <nav class="navbar">
+            <a href="#" class="logo" onclick="switchPage('home')">
+                <i class="fas fa-crown"></i>
+                <span>تاج</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-item active" onclick="switchPage('home')">الرئيسية</a></li>
+                <li><a href="#" class="nav-item" onclick="switchPage('products')">المنتجات والأسعار</a></li>
+                <li><a href="#" class="nav-item" onclick="switchPage('farm')">المزرعة والتصنيع</a></li>
+                <li><a href="#" class="nav-item" onclick="switchPage('orders')">قسم الطلبات</a></li>
+                <li><a href="#" class="nav-item" onclick="switchPage('about')">عن الشركة</a></li>
             </ul>
         </nav>
-        <div class="header-actions">
-            <button class="cart-icon-btn" onclick="toggleCart()">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="cart-count" id="cartCount">0</span>
-            </button>
-        </div>
     </header>
 
-    <!-- واجهة الترحيب الرئيسية -->
-    <section class="hero" id="home">
-        <div class="hero-text">
-            <h1>أجود المنتجات الغذائية من <span>تاج</span> لتجهيز بيتك</h1>
-            <p>أرز، مكرونة، سكر، وبهارات طازجة بأعلى معايير الجودة والتغليف الفاخر.</p>
-            <a href="#products" class="btn-primary">تصفح المنتجات الآن</a>
+    <!-- Page 1: Home Section -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <h1>شركة تاج للغذائيات الفاخرة</h1>
+            <p>نقدم لكم أجود أنواع الأرز المصرى، السكر النقس، والبهارات الفريدة بتعبئة وتغليف احترافي يضمن أعلى مستويات الجودة والسلامة.</p>
+            <button class="btn btn-gold" onclick="switchPage('products')">استعرض المنتجات</button>
+            <button class="btn" onclick="switchPage('orders')">اطلب الآن</button>
         </div>
     </section>
 
-    <!-- قسم عرض المنتجات -->
-    <section class="products-section" id="products">
-        <div class="section-title">
-            <h2>تشكيلة منتجات تاج الفاخرة</h2>
+    <!-- Page 2: Products & Prices -->
+    <section id="products" class="page-section">
+        <div class="section-header">
+            <h2>منتجاتنا والأسعار</h2>
+            <p>أسعار خاصة وضمان للجودة العالية لكل منتج</p>
         </div>
-
         <div class="products-grid">
-
-            <!-- 1. الأرز -->
+            <!-- Item 1 -->
             <div class="product-card">
-                <div>
-                    <div class="product-img-holder">
-                        <img src="1000437198.jpg" alt="أرز تاج الفاخر" onerror="this.src='https://via.placeholder.com/200?text=TAJ+Rice'">
-                    </div>
-                    <div class="product-info">
-                        <h3>أرز تاج الفاخر (1 كجم)</h3>
-                        <p>أرز حبة عريضة درجة أولى ناصع البياض وخالي من الشوائب.</p>
-                    </div>
+                <div class="product-graphic">
+                    <i class="fas fa-bowl-rice"></i>
                 </div>
-                <div>
-                    <div class="price-section">
-                        <div class="product-price">35 <span>جنيه</span></div>
-                    </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('أرز تاج الفاخر', 35, event)">
-                        <i class="fa-solid fa-plus"></i> إضافة للسلة
-                    </button>
-                </div>
+                <h3>أرز تاج الفاخر (1 كجم)</h3>
+                <p>أرز أبيض عريض الحبة، منقى بعناية ومغسول بالليزر.</p>
+                <div class="price">35 ج.م</div>
+                <button class="btn" onclick="switchPage('orders')">شراء الآن</button>
             </div>
-
-            <!-- 2. المكرونة -->
+            <!-- Item 2 -->
             <div class="product-card">
-                <div>
-                    <div class="product-img-holder">
-                        <img src="1000437192.jpg" alt="مكرونة تاج العضوية" onerror="this.src='https://via.placeholder.com/200?text=TAJ+Pasta'">
-                    </div>
-                    <div class="product-info">
-                        <h3>مكرونة تاج العضوية (1 كجم)</h3>
-                        <p>مصنوعة من أجود أنواع القمح الصلب، سهلة الطهي ولا تتلتصق.</p>
-                    </div>
+                <div class="product-graphic">
+                    <i class="fas fa-cubes-stacked"></i>
                 </div>
-                <div>
-                    <div class="price-section">
-                        <div class="product-price">28 <span>جنيه</span></div>
-                    </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('مكرونة تاج العضوية', 28, event)">
-                        <i class="fa-solid fa-plus"></i> إضافة للسلة
-                    </button>
-                </div>
+                <h3>سكر تاج الأبيض (1 كجم)</h3>
+                <p>سكر ناصع البياض، سريع الذوبان ونقي 100%.</p>
+                <div class="price">30 ج.م</div>
+                <button class="btn" onclick="switchPage('orders')">شراء الآن</button>
             </div>
-
-            <!-- 3. السكر (مع خيارات السعر والمتوسط والمرتفع) -->
+            <!-- Item 3 -->
             <div class="product-card">
-                <div>
-                    <div class="product-img-holder">
-                        <img src="1000437189.jpg" alt="سكر تاج العضوي" onerror="this.src='https://via.placeholder.com/200?text=TAJ+Sugar'">
-                    </div>
-                    <div class="product-info">
-                        <h3>سكر تاج (1 كجم)</h3>
-                        <p>سكر نقي فاخر عالي الجودة للتحلية المثالية.</p>
-                        
-                        <!-- اختيارات الفئة للسكر -->
-                        <div class="sugar-options">
-                            <label for="sugarGrade">اختر الجودة / الدرجة:</label>
-                            <select id="sugarGrade" class="sugar-select" onchange="updateSugarPrice()">
-                                <option value="30" data-name="سكر تاج - درجة متوسطة">درجة متوسطة - 30 جنيه</option>
-                                <option value="42" data-name="سكر تاج - درجة ممتازة مرتفعة">درجة ممتازة فاخرة - 42 جنيه</option>
-                            </select>
-                        </div>
-                    </div>
+                <div class="product-graphic">
+                    <i class="fas fa-pepper-hot"></i>
                 </div>
-                <div>
-                    <div class="price-section">
-                        <div class="product-price" id="sugarPriceDisplay">30 <span>جنيه</span></div>
-                    </div>
-                    <button class="add-to-cart-btn" onclick="addSugarToCart(event)">
-                        <i class="fa-solid fa-plus"></i> إضافة للسلة
-                    </button>
-                </div>
+                <h3>تشكيلة بهارات تاج (250 جرام)</h3>
+                <p>خلطة بهارات مشكلة مطحونة طازجة وبأعلى معايير الجودة.</p>
+                <div class="price">45 ج.م</div>
+                <button class="btn" onclick="switchPage('orders')">شراء الآن</button>
             </div>
-
-            <!-- 4. بوكس البهارات -->
-            <div class="product-card">
-                <div>
-                    <div class="product-img-holder">
-                        <img src="1000437195.jpg" alt="مجموعة بهارات تاج" onerror="this.src='https://via.placeholder.com/200?text=TAJ+Spices'">
-                    </div>
-                    <div class="product-info">
-                        <h3>مجموعة بهارات تاج الملكية</h3>
-                        <p>تشمل 4 عبوات: فلفل أسود، ملح بحري، كمون بلدي، وشطة حارة.</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="price-section">
-                        <div class="product-price">95 <span>جنيه</span></div>
-                    </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('مجموعة بهارات تاج الملكية', 95, event)">
-                        <i class="fa-solid fa-plus"></i> إضافة للسلة
-                    </button>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- سلة التسوق التفاعلية جانبيًا -->
-    <div class="cart-drawer" id="cartDrawer">
-        <div class="cart-header">
-            <h3>سلة التسوق</h3>
-            <button class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+    <!-- Page 3: Farm & Manufacturing Info -->
+    <section id="farm" class="page-section">
+        <div class="section-header">
+            <h2>المزرعة وطريقة التصنيع الاحترافية</h2>
+            <p>تعرف على رحلة منتجاتنا من الحقول وحتى طاولتك</p>
         </div>
-        <div class="cart-items" id="cartItemsContainer">
-            <p style="text-align: center; color: #888; margin-top: 20px;">السلة فارغة حالياً</p>
-        </div>
-        <div class="cart-footer">
-            <div class="total-price">
-                <span>الإجمالي:</span>
-                <span id="cartTotal">0 جنيه</span>
-            </div>
-            <button class="btn-primary" style="width: 100%; text-align: center;" onclick="checkout()">إتمام الطلب</button>
-        </div>
-    </div>
 
-    <!-- الفوتر وحقوق الملكية -->
+        <!-- Rice Farm Images Gallery -->
+        <h3 style="margin-bottom: 1.5rem; text-align: center;">صور من مزارع الأرز الخاصة بنا</h3>
+        <div class="farm-gallery">
+            <div class="farm-img-card">
+                <img src="https://images.unsplash.com/photo-1536638317175-32449de0dc0f?auto=format&fit=crop&w=600&q=80" alt="مزرعة أرز">
+                <div class="caption">حقول الأرز الخضراء عند بداية النمو</div>
+            </div>
+            <div class="farm-img-card">
+                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80" alt="حصاد الأرز">
+                <div class="caption">مرحلة حصاد السنابل الذهبية</div>
+            </div>
+            <div class="farm-img-card">
+                <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80" alt="معالجة الأرز">
+                <div class="caption">تجفيف وتجهيز المحصول للتبييض</div>
+            </div>
+        </div>
+
+        <!-- Information Cards -->
+        <div class="info-cards">
+            <div class="info-card">
+                <h3><i class="fas fa-seedling"></i> كيف يخرج الأرز؟ وطريقة تصنيعه</h3>
+                <p>يبدأ الأرز كزراعة في مزارع غنية بالمياه. بعد نضج السنابل، يتم حصاد "الأرز الشعير". يدخل بعدها مضارب شركة تاج المتطورة حيث يمر بمراحل: التبييض، إزالة القشور، التلميع بالبخار، ثم الفرز الإلكتروني بالليزر لاستبعاد أي حبات غير مثالية وضمان تقديم أرز أبيض نقي 100%.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-industry"></i> تصنيع السكر وتكريره</h3>
+                <p>نستخلص السكر من أفضل محاصيل القصب والبنجر. يمر السكر بعمليات العصر والتصفية، ثم التبلور والتكرير متعدد المراحل لنزع أي شوائب. ينتج عن ذلك بلورات سكر ناصعة البياض عالية الجودة معقمة بالكامل.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-mortar-pestle"></i> معالجة البهارات</h3>
+                <p>نستورد أفضل الأعشاب والبهارات الخام مباشرة من المزارع. تجفف الهبوات بالطرق الطبيعية وتطحن عند درجات حرارة منخفضة جداً للحفاظ على الزيوت الطيارة والنكهة الغنية، ثم تعبأ فوراً في بيئة مفرغة من الهواء.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Order Section -->
+    <section id="orders" class="page-section">
+        <div class="section-header">
+            <h2>قسم الطلبات</h2>
+            <p>اطلب منتجاتك الآن وسنتواصل معك فوراً لتأكيد التوصيل</p>
+        </div>
+        <div class="order-container">
+            <div class="order-form">
+                <form id="checkoutForm" onsubmit="handleOrder(event)">
+                    <div class="form-group">
+                        <label>الاسم بالكامل</label>
+                        <input type="text" placeholder="أدخل اسمك" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الهاتف</label>
+                        <input type="tel" placeholder="01xxxxxxxx" required>
+                    </div>
+                    <div class="form-group">
+                        <label>المنتج المطلوب</label>
+                        <select required>
+                            <option value="">اختر المنتج</option>
+                            <option value="rice">أرز تاج الفاخر (35 ج.م)</option>
+                            <option value="sugar">سكر تاج الأبيض (30 ج.م)</option>
+                            <option value="spices">تشكيلة بهارات تاج (45 ج.م)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>الكمية</label>
+                        <input type="number" min="1" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>العنوان بالتفصيل</label>
+                        <textarea rows="3" placeholder="أدخل عنوان التوصيل" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold" style="width: 100%;">تأكيد الطلب</button>
+                </form>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--off-white); padding: 2rem; border-radius: 15px;">
+                <i class="fas fa-truck-fast" style="font-size: 4rem; color: var(--accent-gold); margin-bottom: 1rem;"></i>
+                <h3>توصيل سريع وآمن</h3>
+                <p>نوفر خدمة التوصيل لجميع المحافظات مع الحفاظ على سلامة "الباكدج" الفاخر حتى يصلك لبايل منزلك بأفضل حالة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 5: About Company -->
+    <section id="about" class="page-section">
+        <div class="section-header">
+            <h2>عن شركة تاج</h2>
+            <p>الجودة والأصالة في كل بيت</p>
+        </div>
+        <div class="about-content">
+            <div class="founders-badge">مؤسسو الشركة: أولاد عائلة جلال الدسوقي</div>
+            <h1 style="margin-bottom: 1.5rem;">أكبر شركة للتعبئة والتغليف الاحترافي</h1>
+            <p style="font-size: 1.2rem; max-width: 900px; margin: 0 auto; color: var(--text-muted);">
+                تأسست شركة "تاج" على يد <b>أولاد عائلة جلال الدسوقي</b> لتبني معياراً جديداً في عالم الأغذية. نحن نفخر بكوننا أكبر شركة تقدم <b>أعلى جودة في السوق</b> مع تصميم وتنفيد "باكدج" احترافي ومبتكر يضمن حماية المنتجات من العوامل الجوية، الحفاظ على النكهة الطازجة، وتسهيل الاستخدام لعملائنا الكرام.
+            </p>
+            
+            <div class="packaging-features">
+                <div class="feature-item">
+                    <i class="fas fa-box-open"></i>
+                    <h4>تغليف عالي الجودة</h4>
+                    <p>أكياس مقاومة للرطوبة وتضمن حماية المنتج.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-award"></i>
+                    <h4>أعلى جودة بالسوق</h4>
+                    <p>نقاوة 100% معايير سلامة عالمية.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <h4>إرث عائلي</h4>
+                    <p>بخبرة وحرص أولاد عائلة جلال الدسوقي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 - تم البرمجة بواسطة <span class="developer-name">مصطفى تامر</span></p>
+        <p>&copy; 2026 جميع الحقوق محفوظة لشركة تاج - عائلة جلال الدسوقي</p>
     </footer>
 
-    <!-- الجافاسكربت للتفاعل مع الواجهة -->
+    <!-- JavaScript For Page Switching & Interactive UI -->
     <script>
-        let cart = [];
-        let total = 0;
+        function switchPage(pageId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => section.classList.remove('active'));
 
-        // فتح وإغلاق السلة
-        function toggleCart() {
-            document.getElementById('cartDrawer').classList.toggle('open');
-        }
+            // Show target section
+            document.getElementById(pageId).classList.add('active');
 
-        // تحديث سعر السكر بناءً على اختيار الدرجة (متوسط / مرتفع)
-        function updateSugarPrice() {
-            const select = document.getElementById('sugarGrade');
-            const price = select.value;
-            document.getElementById('sugarPriceDisplay').innerHTML = `${price} <span>جنيه</span>`;
-        }
-
-        // إضافة السكر للسلة بناءً على خياره المحدد
-        function addSugarToCart(event) {
-            const select = document.getElementById('sugarGrade');
-            const selectedOption = select.options[select.selectedIndex];
-            const name = selectedOption.getAttribute('data-name');
-            const price = parseFloat(select.value);
+            // Update Navigation Menu Active state
+            const navLinks = document.querySelectorAll('.nav-item');
+            navLinks.forEach(link => link.classList.remove('active'));
             
-            addToCart(name, price, event);
+            // Highlight current clicked nav link
+            event.target.classList.add('active');
+
+            // Scroll smoothly to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // إضافة منتج للسلة
-        function addToCart(title, price, event) {
-            cart.push({ title, price });
-            updateCartUI();
-            
-            // إشعار بسيط بالاضافة
-            if (event && event.currentTarget) {
-                const btn = event.currentTarget;
-                const originalText = btn.innerHTML;
-                btn.innerHTML = `<i class="fa-solid fa-check"></i> تم التموين`;
-                btn.style.background = "#2ecc71";
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = "";
-                }, 1200);
-            }
-        }
-
-        // تحديث واجهة السلة
-        function updateCartUI() {
-            const cartCount = document.getElementById('cartCount');
-            const cartItemsContainer = document.getElementById('cartItemsContainer');
-            const cartTotal = document.getElementById('cartTotal');
-
-            cartCount.innerText = cart.length;
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `<p style="text-align: center; color: #888; margin-top: 20px;">السلة فارغة حالياً</p>`;
-                cartTotal.innerText = `0 جنيه`;
-                return;
-            }
-
-            cartItemsContainer.innerHTML = '';
-            total = 0;
-
-            cart.forEach((item, index) => {
-                total += item.price;
-                cartItemsContainer.innerHTML += `
-                    <div class="cart-item">
-                        <div class="cart-item-details">
-                            <h4>${item.title}</h4>
-                            <p>${item.price} جنيه</p>
-                        </div>
-                        <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#e74c3c; cursor:pointer;">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                `;
-            });
-
-            cartTotal.innerText = `${total} جنيه`;
-        }
-
-        // حذف عنصر من السلة
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        // إتمام الطلب
-        function checkout() {
-            if (cart.length === 0) {
-                alert('السلة فارغة!');
-                return;
-            }
-            alert(`تم استلام طلبك بنجاح! الإجمالي: ${total} جنيه.`);
-            cart = [];
-            updateCartUI();
-            toggleCart();
+        function handleOrder(e) {
+            e.preventDefault();
+            alert("شكراً لطلبك من شركة تاج! تم استلام طلبك بنجاح وسيتواصل معك فريقنا خلال ساعات.");
+            document.getElementById('checkoutForm').reset();
         }
     </script>
 </body>
