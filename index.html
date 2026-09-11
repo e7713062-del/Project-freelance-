@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تاج - TAJ | معرض الصور الفاخر</title>
+    <title>تاج - TAJ | المنتجات الغذائية الفاخرة</title>
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -78,16 +78,104 @@
             transition: var(--transition);
         }
 
-        nav a:hover, nav a.active {
+        nav a:hover {
             color: var(--primary-color);
         }
 
-        /* --- قسم معرض الصور --- */
-        .gallery-section {
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon-btn {
+            position: relative;
+            background: var(--bg-secondary);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .cart-icon-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- القسم الرئيسي (Hero) --- */
+        .hero {
             padding: 60px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-            min-height: 80vh;
+            background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70vh;
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- قسم المنتجات --- */
+        .products-section {
+            padding: 80px 5%;
+            background: var(--bg-light);
         }
 
         .section-title {
@@ -95,80 +183,219 @@
             margin-bottom: 50px;
         }
 
-        .section-title h1 {
-            font-size: 38px;
-            font-weight: 800;
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
             position: relative;
             display: inline-block;
         }
 
-        .section-title h1::after {
+        .section-title h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 60px;
             height: 3px;
             background: var(--primary-color);
             border-radius: 2px;
         }
 
-        .gallery-grid {
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
-        .gallery-card {
+        /* كارت المنتج مع تأثيرات CSS */
+        .product-card {
             background: #fff;
             border-radius: 20px;
-            overflow: hidden;
+            padding: 20px;
             border: 1px solid #eee;
             box-shadow: var(--shadow-light);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
         }
 
-        .gallery-card:hover {
+        .product-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
             border-color: var(--primary-color);
         }
 
-        .gallery-img-holder {
+        .product-img-holder {
             width: 100%;
-            height: 320px;
-            background: #fcfcfc;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #fcfcfc;
+            border-radius: 15px;
+            margin-bottom: 20px;
             overflow: hidden;
         }
 
-        .gallery-img-holder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .product-img-holder img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
             transition: var(--transition);
         }
 
-        .gallery-card:hover .gallery-img-holder img {
+        .product-card:hover .product-img-holder img {
             transform: scale(1.08);
         }
 
-        .gallery-caption {
-            padding: 20px;
-            text-align: center;
-            background: #fff;
-            border-top: 1px solid #f5f5f5;
+        .product-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
-        .gallery-caption h3 {
-            font-size: 20px;
-            font-weight: 700;
+        .product-info p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: 800;
             color: var(--text-dark);
+        }
+
+        .product-price span {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* تخصيص اختيار السكر */
+        .sugar-options {
+            margin-bottom: 15px;
+        }
+
+        .sugar-options label {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .sugar-select {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            margin-top: 15px;
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        /* --- سلة التسوق التفاعلية (Drawer) --- */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 350px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.1);
+            z-index: 1001;
+            transition: var(--transition);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.open {
+            left: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .cart-item-details h4 {
+            font-size: 15px;
+        }
+
+        .cart-item-details p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .cart-footer {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .total-price {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
         /* --- الفوتر والحقوق --- */
@@ -185,6 +412,7 @@
             letter-spacing: 0.5px;
         }
 
+        /* تخصيص لون اسم مصطفى تامر بالاخضر */
         .developer-name {
             color: var(--developer-green);
             font-weight: 800;
@@ -196,6 +424,18 @@
         .developer-name:hover {
             transform: scale(1.05);
             text-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cart-drawer {
+                width: 100%;
+                left: -100%;
+            }
         }
     </style>
 </head>
@@ -209,67 +449,252 @@
         </a>
         <nav>
             <ul>
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#" class="active">معرض الصور</a></li>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#products">المنتجات</a></li>
+                <li><a href="#about">عن تاج</a></li>
             </ul>
         </nav>
+        <div class="header-actions">
+            <button class="cart-icon-btn" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
     </header>
 
-    <!-- قسم عرض الصور -->
-    <section class="gallery-section">
+    <!-- واجهة الترحيب الرئيسية -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>أجود المنتجات الغذائية من <span>تاج</span> لتجهيز بيتك</h1>
+            <p>أرز، مكرونة، سكر، وبهارات طازجة بأعلى معايير الجودة والتغليف الفاخر.</p>
+            <a href="#products" class="btn-primary">تصفح المنتجات الآن</a>
+        </div>
+    </section>
+
+    <!-- قسم عرض المنتجات -->
+    <section class="products-section" id="products">
         <div class="section-title">
-            <h1>معرض صور منتجات تاج</h1>
+            <h2>تشكيلة منتجات تاج الفاخرة</h2>
         </div>
 
-        <div class="gallery-grid">
+        <div class="products-grid">
 
-            <!-- 1. أرز تاج -->
-            <div class="gallery-card">
-                <div class="gallery-img-holder">
-                    <img src="1000437198_2.jpg" alt="أرز تاج الفاخر">
+            <!-- 1. الأرز -->
+            <div class="product-card">
+                <div>
+                    <div class="product-img-holder">
+                        <img src="1000437198.jpg" alt="أرز تاج الفاخر" onerror="this.src='https://via.placeholder.com/200?text=TAJ+Rice'">
+                    </div>
+                    <div class="product-info">
+                        <h3>أرز تاج الفاخر (1 كجم)</h3>
+                        <p>أرز حبة عريضة درجة أولى ناصع البياض وخالي من الشوائب.</p>
+                    </div>
                 </div>
-                <div class="gallery-caption">
-                    <h3>أرز تاج الفاخر</h3>
+                <div>
+                    <div class="price-section">
+                        <div class="product-price">35 <span>جنيه</span></div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('أرز تاج الفاخر', 35, event)">
+                        <i class="fa-solid fa-plus"></i> إضافة للسلة
+                    </button>
                 </div>
             </div>
 
-            <!-- 2. سكر تاج -->
-            <div class="gallery-card">
-                <div class="gallery-img-holder">
-                    <img src="1000437189_2.jpg" alt="سكر تاج العضوي">
+            <!-- 2. المكرونة -->
+            <div class="product-card">
+                <div>
+                    <div class="product-img-holder">
+                        <img src="1000437192.jpg" alt="مكرونة تاج العضوية" onerror="this.src='https://via.placeholder.com/200?text=TAJ+Pasta'">
+                    </div>
+                    <div class="product-info">
+                        <h3>مكرونة تاج العضوية (1 كجم)</h3>
+                        <p>مصنوعة من أجود أنواع القمح الصلب، سهلة الطهي ولا تتلتصق.</p>
+                    </div>
                 </div>
-                <div class="gallery-caption">
-                    <h3>سكر تاج العضوي</h3>
+                <div>
+                    <div class="price-section">
+                        <div class="product-price">28 <span>جنيه</span></div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('مكرونة تاج العضوية', 28, event)">
+                        <i class="fa-solid fa-plus"></i> إضافة للسلة
+                    </button>
                 </div>
             </div>
 
-            <!-- 3. مكرونة تاج -->
-            <div class="gallery-card">
-                <div class="gallery-img-holder">
-                    <img src="1000437192_2.jpg" alt="مكرونة تاج العضوية">
+            <!-- 3. السكر (مع خيارات السعر والمتوسط والمرتفع) -->
+            <div class="product-card">
+                <div>
+                    <div class="product-img-holder">
+                        <img src="1000437189.jpg" alt="سكر تاج العضوي" onerror="this.src='https://via.placeholder.com/200?text=TAJ+Sugar'">
+                    </div>
+                    <div class="product-info">
+                        <h3>سكر تاج (1 كجم)</h3>
+                        <p>سكر نقي فاخر عالي الجودة للتحلية المثالية.</p>
+                        
+                        <!-- اختيارات الفئة للسكر -->
+                        <div class="sugar-options">
+                            <label for="sugarGrade">اختر الجودة / الدرجة:</label>
+                            <select id="sugarGrade" class="sugar-select" onchange="updateSugarPrice()">
+                                <option value="30" data-name="سكر تاج - درجة متوسطة">درجة متوسطة - 30 جنيه</option>
+                                <option value="42" data-name="سكر تاج - درجة ممتازة مرتفعة">درجة ممتازة فاخرة - 42 جنيه</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-caption">
-                    <h3>مكرونة تاج العضوية</h3>
+                <div>
+                    <div class="price-section">
+                        <div class="product-price" id="sugarPriceDisplay">30 <span>جنيه</span></div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addSugarToCart(event)">
+                        <i class="fa-solid fa-plus"></i> إضافة للسلة
+                    </button>
                 </div>
             </div>
 
-            <!-- 4. بهارات تاج -->
-            <div class="gallery-card">
-                <div class="gallery-img-holder">
-                    <img src="1000437195_2.jpg" alt="مجموعة بهارات تاج الملكية">
+            <!-- 4. بوكس البهارات -->
+            <div class="product-card">
+                <div>
+                    <div class="product-img-holder">
+                        <img src="1000437195.jpg" alt="مجموعة بهارات تاج" onerror="this.src='https://via.placeholder.com/200?text=TAJ+Spices'">
+                    </div>
+                    <div class="product-info">
+                        <h3>مجموعة بهارات تاج الملكية</h3>
+                        <p>تشمل 4 عبوات: فلفل أسود، ملح بحري، كمون بلدي، وشطة حارة.</p>
+                    </div>
                 </div>
-                <div class="gallery-caption">
-                    <h3>مجموعة بهارات تاج الملكية</h3>
+                <div>
+                    <div class="price-section">
+                        <div class="product-price">95 <span>جنيه</span></div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('مجموعة بهارات تاج الملكية', 95, event)">
+                        <i class="fa-solid fa-plus"></i> إضافة للسلة
+                    </button>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- سلة التسوق التفاعلية جانبيًا -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>سلة التسوق</h3>
+            <button class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <p style="text-align: center; color: #888; margin-top: 20px;">السلة فارغة حالياً</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-price">
+                <span>الإجمالي:</span>
+                <span id="cartTotal">0 جنيه</span>
+            </div>
+            <button class="btn-primary" style="width: 100%; text-align: center;" onclick="checkout()">إتمام الطلب</button>
+        </div>
+    </div>
+
     <!-- الفوتر وحقوق الملكية -->
     <footer>
         <p>جميع الحقوق محفوظة © 2026 - تم البرمجة بواسطة <span class="developer-name">مصطفى تامر</span></p>
     </footer>
 
+    <!-- الجافاسكربت للتفاعل مع الواجهة -->
+    <script>
+        let cart = [];
+        let total = 0;
+
+        // فتح وإغلاق السلة
+        function toggleCart() {
+            document.getElementById('cartDrawer').classList.toggle('open');
+        }
+
+        // تحديث سعر السكر بناءً على اختيار الدرجة (متوسط / مرتفع)
+        function updateSugarPrice() {
+            const select = document.getElementById('sugarGrade');
+            const price = select.value;
+            document.getElementById('sugarPriceDisplay').innerHTML = `${price} <span>جنيه</span>`;
+        }
+
+        // إضافة السكر للسلة بناءً على خياره المحدد
+        function addSugarToCart(event) {
+            const select = document.getElementById('sugarGrade');
+            const selectedOption = select.options[select.selectedIndex];
+            const name = selectedOption.getAttribute('data-name');
+            const price = parseFloat(select.value);
+            
+            addToCart(name, price, event);
+        }
+
+        // إضافة منتج للسلة
+        function addToCart(title, price, event) {
+            cart.push({ title, price });
+            updateCartUI();
+            
+            // إشعار بسيط بالاضافة
+            if (event && event.currentTarget) {
+                const btn = event.currentTarget;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = `<i class="fa-solid fa-check"></i> تم التموين`;
+                btn.style.background = "#2ecc71";
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = "";
+                }, 1200);
+            }
+        }
+
+        // تحديث واجهة السلة
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartTotal = document.getElementById('cartTotal');
+
+            cartCount.innerText = cart.length;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `<p style="text-align: center; color: #888; margin-top: 20px;">السلة فارغة حالياً</p>`;
+                cartTotal.innerText = `0 جنيه`;
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <h4>${item.title}</h4>
+                            <p>${item.price} جنيه</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#e74c3c; cursor:pointer;">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            cartTotal.innerText = `${total} جنيه`;
+        }
+
+        // حذف عنصر من السلة
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // إتمام الطلب
+        function checkout() {
+            if (cart.length === 0) {
+                alert('السلة فارغة!');
+                return;
+            }
+            alert(`تم استلام طلبك بنجاح! الإجمالي: ${total} جنيه.`);
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+    </script>
 </body>
 </html>
