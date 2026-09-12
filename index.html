@@ -570,8 +570,11 @@
             const navLinks = document.querySelectorAll('.nav-item');
             navLinks.forEach(link => link.classList.remove('active'));
             
-            // Highlight current clicked nav link
-            event.target.classList.add('active');
+            // Highlight current active nav link
+            const activeLink = Array.from(navLinks).find(link => link.getAttribute('onclick').includes(pageId));
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
 
             // Scroll smoothly to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
